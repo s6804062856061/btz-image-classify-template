@@ -9,15 +9,18 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    allowedHosts: ["884mvf-8080.csb.app", "884mvf-4173.csb.app"],
   },
   plugins: [
     react(),
     mode === "development" && componentTagger(),
     viteStaticCopy({
-      targets: [{
-        src: "node_modules/onnxruntime-web/dist/*.wasm",
-        dest: "."
-      }],
+      targets: [
+        {
+          src: "node_modules/onnxruntime-web/dist/*.wasm",
+          dest: ".",
+        },
+      ],
     }),
   ].filter(Boolean),
   resolve: {
